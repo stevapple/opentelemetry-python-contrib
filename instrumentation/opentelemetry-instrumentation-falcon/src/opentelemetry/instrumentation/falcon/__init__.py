@@ -223,7 +223,11 @@ _ENVIRON_EXC = "opentelemetry-falcon.exc"
 _response_propagation_setter = FuncSetter(falcon.Response.append_header)
 
 _parsed_falcon_version = package_version.parse(falcon.__version__)
-if _parsed_falcon_version >= package_version.parse("3.0.0"):
+if _parsed_falcon_version >= package_version.parse("4.0.0"):
+    # Falcon 4
+    _instrument_app = "App"
+    _falcon_version = 4
+elif _parsed_falcon_version >= package_version.parse("3.0.0"):
     # Falcon 3
     _instrument_app = "App"
     _falcon_version = 3
